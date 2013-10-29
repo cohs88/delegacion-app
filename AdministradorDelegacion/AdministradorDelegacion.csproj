@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Empleado.cs" />
+    <Compile Include="BLL\Personal.cs" />
+    <Compile Include="BLL\Rol.cs" />
     <Compile Include="BLL\Sesion.cs" />
     <Compile Include="BLL\Usuario.cs" />
     <Compile Include="DAL\DBConnection.cs" />

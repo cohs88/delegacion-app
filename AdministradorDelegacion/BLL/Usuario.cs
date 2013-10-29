@@ -46,6 +46,24 @@ namespace AdministradorDelegacion.BLL
             return dt.Rows.Count > 0 ? true : false;
         }
 
+        public DataTable Get()
+        {
+            DataTable dt = new DataTable();
+            DBConnection dbconnectionObj = new DBConnection();
+            string query = @"select
+u.id as usuario_id,
+u.usuario,
+e.num_placa as 'Placa',
+e.nombre as 'Nombre Empleado',
+e.telefono,
+r.nombre as rol
+from 
+usuarios as u inner join personal as e on u.empleado_id = e.id
+inner join roles as r on u.rol_id = r.id";
+            dt = dbconnectionObj.Select(query, null);
+            return dt;
+        }
+
         public void FillSession(string usuario)
         {
             DBConnection dbconnectionObj = new DBConnection();
@@ -74,6 +92,60 @@ where u.usuario = @usuario";
                     Sesion.delegacion_id = int.Parse(row["delegacion_id"].ToString());
                 }
             }
+        }
+
+        public bool Exists(string usuario)
+        {
+            DataTable dt = new DataTable();
+            DBConnection dbconnectionObj = new DBConnection();
+            string query = @"select id from usuarios where usuario = @usuario";
+            dt = dbconnectionObj.Select(query, 
+                new SqlParameter("@usuario", usuario)
+                );
+            return dt.Rows.Count > 0 ? true : false;
+        }
+
+        public void Insert(string usuario, string pwd, string confirm_pwd, int empleado_id, int rol_id)
+        {
+            if (usuario.Equals(""))
+            {
+                throw new Exception("Usuario requerido.");
+            }
+
+            if (Exists(usuario))
+            {
+                throw new Exception("Usuario ya existe.");
+            }
+
+            if (pwd.Equals("") || confirm_pwd.Equals(""))
+            {
+                throw new Exception("Password requerido.");
+            }
+
+            if (!pwd.Equals(confirm_pwd))
+            {
+                throw new Exception("Passwords deben coincidir.");
+            }
+
+            if (empleado_id <= 0)
+            {
+                throw new Exception("Empleado requerido.");
+            }
+
+            if (rol_id <= 0)
+            {
+                throw new Exception("Rol requerido.");
+            }
+
+            DBConnection dbconnectionObj = new DBConnection();
+            string query = @"insert into Usuarios(usuario, pwd, empleado_id, rol_id)
+                            values(@usuario,  HashBytes('MD5', cast(@pwd as varchar)), @empleado_id, @rol_id)";
+            dbconnectionObj.NonQuery(query,
+                new SqlParameter("@usuario", usuario),
+                new SqlParameter("@pwd", pwd),
+                new SqlParameter("@empleado_id", empleado_id),
+                new SqlParameter("@rol_id", rol_id)
+                );
         }
     }
 }
