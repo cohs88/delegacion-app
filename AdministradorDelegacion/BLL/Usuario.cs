@@ -34,6 +34,12 @@ namespace AdministradorDelegacion.BLL
             this.rol_id = rol_id;
         }
 
+        /// <summary>
+        /// Login para el sistema
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public bool Login(string usuario, string pwd)
         {
             DBConnection dbconnectionObj = new DBConnection();
@@ -44,6 +50,35 @@ namespace AdministradorDelegacion.BLL
                 new SqlParameter("@pwd", pwd));
 
             return dt.Rows.Count > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// Obtiene un usuario por el identificador
+        /// </summary>
+        /// <param name="usuario_id"></param>
+        /// <returns></returns>
+        public Usuario GetById(int usuario_id)
+        {
+            DataTable dt = new DataTable();
+            DBConnection dbconnectionObj = new DBConnection();
+            string query = @"select id, usuario, empleado_id, rol_id where id=@usuario_id";
+
+            dt = dbconnectionObj.Select(query, null);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    return new Usuario(
+                        int.Parse(row["id"].ToString()),
+                        row["usuario"].ToString(),
+                        "",
+                        int.Parse(row["empleado_id"].ToString()),
+                        int.Parse(row["rol_id"].ToString())
+                        );
+                }
+            }
+
+            return new Usuario();
         }
 
         public DataTable Get()

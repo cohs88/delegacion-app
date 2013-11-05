@@ -49,5 +49,18 @@ namespace AdministradorDelegacion
         {
             dgvDatos.DataSource = usuarioObj.Get();
         }
+
+        public void Editar()
+        {
+            if (dgvDatos.SelectedRows.Count > 0)
+            {
+                int id = int.Parse(dgvDatos.CurrentRow.Cells[0].Value.ToString());
+                if (id > 0)
+                {
+                    FrmAltaUsuarios frm = new FrmAltaUsuarios(this);
+                    frm.ShowDialog();
+                }
+            }
+        }
     }
 }

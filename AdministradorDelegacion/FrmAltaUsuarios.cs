@@ -16,12 +16,21 @@ namespace AdministradorDelegacion
         Rol rolObj;
         Personal personalObj;
         FrmUsuarios frmPadre;
+        public bool es_agregar = true;
+        public int id;
         public FrmAltaUsuarios(FrmUsuarios frm)
         {
             InitializeComponent();
             frmPadre = frm;
             rolObj = new Rol();
             personalObj = new Personal();
+
+            if (!this.es_agregar)
+            {
+
+                txtPassword.Enabled = false;
+                txtConfirmarPassword.Enabled = false;
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
