@@ -74,9 +74,10 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(21, 15);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 13);
+            this.label9.Size = new System.Drawing.Size(97, 13);
             this.label9.TabIndex = 38;
-            this.label9.Text = "Alta de Turnados";
+            this.label9.Text = "Alta de Turnados 2";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // textBox4
             // 

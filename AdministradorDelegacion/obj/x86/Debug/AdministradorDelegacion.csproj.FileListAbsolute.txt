@@ -35,3 +35,6 @@ C:\Users\cohs\Documents\Ingenieria\Cesun\10mo\Proyecto\AdministradorDelegacion\A
 C:\Users\cohs\Documents\Ingenieria\Cesun\10mo\Proyecto\AdministradorDelegacion\AdministradorDelegacion\obj\x86\Debug\AdministradorDelegacion.Properties.Resources.resources
 C:\Users\cohs\Documents\Ingenieria\Cesun\10mo\Proyecto\AdministradorDelegacion\AdministradorDelegacion\obj\x86\Debug\AdministradorDelegacion.csproj.GenerateResource.Cache
 C:\Users\cohs\Documents\Ingenieria\Cesun\10mo\Proyecto\AdministradorDelegacion\AdministradorDelegacion\bin\Debug\AdministradorDelegacion.exe.config
+C:\Users\jesusVazquez\Desktop\Proyecto Integrador 2\delegacion-app\AdministradorDelegacion\bin\Debug\AdministradorDelegacion.exe.config
+C:\Users\jesusVazquez\Desktop\Proyecto Integrador 2\delegacion-app\AdministradorDelegacion\obj\x86\Debug\AdministradorDelegacion.exe
+C:\Users\jesusVazquez\Desktop\Proyecto Integrador 2\delegacion-app\AdministradorDelegacion\obj\x86\Debug\AdministradorDelegacion.pdb
